@@ -1,0 +1,62 @@
+@use 'sass:math';
+
+@function rem-calc($size) {
+  @return (math.div($size, 16)) * 1rem;
+}
+
+// Font settings
+// $font-family-base:           'Roboto', sans-serif;
+// $heading-family-base:        'Otomanopee One', sans-serif;
+
+$font-size-smaller:          rem-calc(14);
+$font-size-base:             rem-calc(16);
+$font-size-medium:           rem-calc(18);
+$font-size-large:            rem-calc(24);
+
+$line-height-base:           1.5;
+$line-height-small:          1.25;
+
+$font-weight-normal:         400;
+$font-weight-bold:           700;
+$font-weight-base:           $font-weight-normal;
+
+// Size settings
+$gutter-base:                rem-calc(30);
+
+// Color settings
+$primary-denim-color:       #3660B2;
+$primary-marian-color:      #0E398F;
+$primary-white:             #FFFFFF;
+
+$secondary-oxford-color:    #071D48;
+$secondary-marian-color:    #0E398F;
+$secondary-lavender-color:  #D6E5FF;
+$secondary-alice-blue-color:#F0F5FF;
+
+$tertiary-mindaro-color:    #CCDC89;
+$tertiary-celadon-color:    #A0CE95;
+$tertiary-vindigris-color:  #48B3AD;
+$tertiary-munsel-blue-color:#3689A0;
+$tertiary-vista-blue-color: #86A2D9;
+$tertiary-mountbatten-pink: #9B839F;
+$tertiary-rosy-brown:       #CD9595;
+$tertiary-atomic-tangerine: #FFA78A;
+$tertiary-sunset-color:     #FFCC7E;
+$tertiary-straw-color:      #F7E97C;
+
+$status-jasper-color:       #E35D4E;
+$status-misty-rose-color:   #FFEDEB;
+$status-ochre-color:        #BE7300;
+$status-papaya-whip-color:  #FFF0D9;
+$status-pine-green-color:   #067069;
+$status-mint-green-color:   #CEF5F2;
+
+$primary-black-color:       #000000;
+$grey-01-color:             #7A7E87;
+$grey-02-color:             #959BA6;
+$grey-03-color:             #CED1D9;
+$grey-04-color:             #E4E6EB;
+$grey-05-color:             #EDF0F5;
+$grey-06-color:             #F5F5F5;
+$grey-07-color:             #F7F8FA;
+

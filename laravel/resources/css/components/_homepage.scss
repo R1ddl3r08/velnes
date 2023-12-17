@@ -1,0 +1,313 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+
+.homepage{
+    display: flex;
+    padding: 0px 20px;
+    .leftDiv{
+        flex-basis: 60%;
+        .welcome{
+            padding: 20px;
+            gap: 30px;
+            width: 646px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            .title{
+                p{
+                    font-size: var.$font-size-base;
+                }
+            }
+            .actions{
+                gap: 20px;
+                a{
+                    border-radius: 8px;
+                    padding: 15px 24px;
+                    gap: 8px;
+                    font-weight: var.$font-weight-bold;
+                    font-size: var.$font-size-base;
+                    border-width: 1px;
+                    border-style: solid;
+                    text-decoration: none;
+                    gap: 8px;
+                    margin-right: 20px;
+                    transition: .3s;
+                    &.start-product-tour{
+                        color: var.$primary-black-color;
+                        background-color: var.$primary-white;
+                        border-color: var.$grey-03-color;
+                        &:hover{
+                            background-color: var.$grey-03-color;
+                        }
+                    }
+                    &.schedule-free-demo{
+                        color: var.$primary-white;
+                        background-color: var.$primary-denim-color;
+                        &:hover{
+                            background-color: var.$primary-marian-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .schedule-and-activity {
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            .nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var.$grey-04-color;
+                .options {
+                    .scheduleButton,
+                    .activityButton {
+                        border-radius: 8px 8px 0px 0px;
+                        padding: 24px 30px;
+                        gap: 10px;
+                        border: 0;
+                        cursor: pointer;
+                        background-color: var.$primary-white;
+                        &.active {
+                            font-weight: var.$font-weight-bold;
+                            background-color: var.$grey-07-color;
+                            border: 1px solid var.$grey-04-color;
+                            border-bottom: 1px solid var.$grey-07-color;
+                            margin-bottom: -1px;
+                        }
+                    }
+                }
+                .select {
+                    height:3.5em; // Adjust the value as needed
+                    box-sizing: border-box;
+                  
+                    // Add any other styling properties you need
+                    border: 1px solid var.$grey-04-color;
+                    border-radius: 8px;
+                    padding: 10px 10px 10px 14px;
+                    color: var.$grey-01-color;
+                    margin-right: 10px;
+                    outline: 0;
+                  }
+            }
+
+            .schedule{
+                .no-appointments{
+                    margin: 20px;
+                    font-weight: var.$font-weight-bold;
+                }
+                .appointment{
+                    border-bottom: 1px solid var.$grey-04-color;
+                    padding: 20px;
+                    gap: 20px;
+                    display: flex;
+                    align-items: center;
+                    .time{
+                        .start-time{
+                            font-weight: var.$font-weight-bold;
+                            margin-bottom: 0;
+                        }
+                        .end-time{
+                            color: var.$grey-01-color;
+                            font-size: var.$font-size-base;
+                            margin-bottom: 0;
+                        }
+                    }
+                    .profile-picture{
+                        .circle{
+                            border-radius: 50%;
+                            width: 40px;
+                            height: 40px;
+                            background-color: var.$primary-denim-color;
+                            color: var.$primary-white;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: white;
+                            p{
+                                margin: 0;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .name-and-service{
+                        .name{
+                            line-height: 20px;
+                            font-size: var.$font-size-base;
+                            font-weight: var.$font-weight-bold;
+                            margin-bottom: 0;
+                        }
+                        .service{
+                            font-size: var.$font-size-base;
+                            color: var.$grey-01-color;
+                            margin-bottom: 0;
+                        }
+                    }
+
+                }
+
+            }
+            .activity{
+                display: none;
+            }
+        }
+        
+    }
+
+    .rightDiv{
+        margin: 20px 0px 0px 20px;
+        flex: 1;
+        .quick-start{
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            .title{
+                border-bottom: 1px solid var.$grey-04-color;
+                padding: 20px;
+                h3{
+                    margin: 0;
+                }
+            }
+            .actions{
+                padding: 20px;
+                display: flex;
+                justify-content: space-around;
+                a{
+                    border: 1px solid var.$grey-04-color;
+                    padding: 12px 16px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    color: var.$primary-black-color;
+                    font-weight: var.$font-weight-bold;
+                    transition: .3s;
+                    &:hover{
+                        background-color: var.$grey-04-color;
+                    }
+                }
+            }
+        }
+
+        .notes{
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            .title{
+                border-bottom: 1px solid var.$grey-04-color;
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                h3{
+                    margin: 0;
+                }
+                button{
+                    border: 0;
+                    outline: 0;
+                    background-color: var.$primary-white;
+                    color: var.$primary-denim-color;
+                    font-size: var.$font-size-base;
+                    cursor: pointer;
+                    span{
+                        font-size: var.$font-size-medium;
+                    }
+                }
+            }
+            .notes-content{
+                .note{
+                    padding: 20px;
+                    border-bottom: 1px solid var.$grey-04-color;
+                    display: flex;
+                    .profile-picture{
+                        .circle{
+                            border-radius: 50%;
+                            width: 40px;
+                            height: 40px;
+                            background-color: var.$primary-denim-color;
+                            color: var.$primary-white;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: white;
+                            p{
+                                margin: 0;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .note-content{
+                        margin-left: 20px;
+                        p{
+                            margin: 0;
+                        }
+                        .name{
+                            font-weight: var.$font-weight-bold;
+                        }
+                        .date{
+                            color: var.$grey-02-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .working-today{
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            .title{
+                border-bottom: 1px solid var.$grey-04-color;
+                padding: 20px;
+                h3{
+                    margin: 0;
+                }
+            }
+            .employees{
+                .employee{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    border-bottom: 1px solid var.$grey-04-color;
+                    .employee-info{
+                        display: flex;
+                        .profile-picture{
+                            margin-right: 10px;
+                            .circle{
+                                border-radius: 50%;
+                                width: 40px;
+                                height: 40px;
+                                background-color: var.$primary-denim-color;
+                                color: var.$primary-white;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: white;
+                                p{
+                                    margin: 0;
+                                    text-transform: uppercase;
+                                }
+                            }
+                        }
+                        .name-and-appointments{
+                            .name{
+                                font-weight: var.$font-weight-bold;
+                                margin: 0;
+                            }
+                            .appointments{
+                                font-size: var.$font-size-base;
+                            }
+                        }
+                    }
+                    .working-hours{
+                        p{
+                            color: var.$grey-01-color;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

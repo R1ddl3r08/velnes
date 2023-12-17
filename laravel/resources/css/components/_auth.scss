@@ -1,0 +1,142 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+
+.auth-bg {
+    background-color: var.$secondary-oxford-color;
+    min-height: 100vh;
+    position: relative;
+    .form-container{
+        background-color: var.$primary-white;
+        display: inline-block;
+        border: 1px solid var.$grey-04-color;
+        border-radius: 8px;
+        width: 616px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .form-title{
+            border-radius: 8px 8px 0px 0px;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0px 0px 0px;
+            border-bottom: 1px solid var.$grey-04-color;
+        }
+
+        .form-inputs {
+            padding: 30px;
+            gap: 30px;
+
+            .form-group{
+                gap: 10px;
+                margin-bottom: 20px;
+                position: relative;
+
+                label {
+                    text-transform: uppercase;
+                    color: var.$grey-01-color;
+                    font-weight: var.$font-weight-bold;
+                    line-height: 20px;
+                    font-size: var.$font-size-base;
+                }
+
+                .form-control{
+                    border-radius: 8px;
+                    border: 2px solid var.$grey-04-color;
+                    padding: 10px 10px 10px 14px;
+                    gap: 143px;
+                    transition: .3s;
+                    outline: 0;
+                    display: block;
+                    width: 100%;
+
+                    &:focus{
+                        border-color: var.$primary-denim-color;
+                    }
+                }
+                .password-requirements {
+                    display: none;
+                    position: absolute;
+                    top: -150px; /* Position below the input */
+                    left: 150px;
+                    z-index: 999; /* Ensure it's above other elements */
+                    background-color: var.$primary-black-color;
+                    color: var.$primary-white;
+                    border-radius: 8px;
+                    padding: 10px;
+                    min-width: 200px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+                    font-size: var.$font-size-smaller;
+                }
+            
+                .password-requirements .requirement {
+                    margin: 5px 0;
+                }
+
+                .error-message{
+                    background-color: var.$status-misty-rose-color;
+                    color: var.$status-jasper-color;
+                    border-radius: 3px;
+                    padding: 10px;
+                    gap: 10px;
+                    font-size: var.$font-size-smaller;
+                    margin-top: 2px;
+                }
+            }
+            p{
+                color: var.$primary-black-color;
+                margin: 0;
+                a {
+                    color: var.$primary-denim-color;
+                }
+            }
+
+        }
+        .form-btn{
+            border-top: 1px solid var.$grey-04-color;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+    
+            button{
+                border-radius: 8px;
+                padding: 12px 16px 12px 16px;
+                width: 278px;
+                height: 60px;
+                gap: 8px;
+                background-color: var.$primary-denim-color;
+                color: var.$primary-white;
+                border: 0;
+                cursor: pointer;
+
+                &.registerBtn{
+                    width: 100%;
+                }
+            }
+
+            a{
+                text-decoration: none;
+                color: var.$primary-denim-color;
+                font-weight: var.$font-weight-bold;
+            }
+        }
+    }
+
+    .message{
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        text-decoration: none;
+        color: var.$primary-white;
+        a {
+            text-decoration: none;
+            color: var.$primary-white;
+            font-weight: var.$font-weight-bold;
+        }
+    }
+}

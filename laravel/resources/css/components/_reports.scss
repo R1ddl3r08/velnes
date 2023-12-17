@@ -1,0 +1,105 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+
+.reports{
+    p{
+        font-size: var.$font-size-base;
+        margin-bottom: 0;
+    }
+    .reports-nav{
+        padding: 10px 10px 10px 20px;
+        background-color: var.$grey-04-color;
+        border-bottom: 1px solid var.$grey-04-color;
+        button{
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            color: var.$grey-01-color;
+            &.active{
+                color: var.$primary-black-color;
+                font-weight: var.$font-weight-bold;
+            }
+        }
+    }
+    .totals{
+        padding: 20px;
+        .actions{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            .form-control{
+                width: 200px;
+                margin-right: 20px;
+            }
+            .right-div{
+                display: flex;
+                button{
+                    color: var.$primary-white;
+                    background-color: var.$primary-denim-color;
+                    border-radius: 8px;
+                    border: 0;
+                    outline: 0;
+                    padding: 12px 16px;
+                    width: 200px;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: var.$primary-marian-color;
+                    }
+                }
+            }
+        }
+
+        .stats{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            .stat-card{
+                padding: 24px;
+                border: 1px solid var.$grey-04-color;
+                border-radius: 8px;
+                flex-basis: 33%;
+                p{
+                    text-transform: uppercase;
+                    color: var.$grey-01-color;
+                    &.number{
+                        font-size: 18px;
+                        font-weight: var.$font-weight-bold;
+                        color: var.$primary-black-color;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+        
+        .card{
+            padding: 26px;
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            .header{
+                padding: 0px 0px 20px 0px;
+                border-bottom: 1px solid var.$grey-04-color;
+                p{
+                    font-weight: var.$font-weight-bold;
+                    font-size: 18px;
+                }
+            }
+            .row{
+                border-bottom: 1px solid var.$grey-04-color;
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 0px;
+            }
+        }
+
+        .totals-methods{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            .totals, .payment-methods{
+                flex-basis: 49%;
+            }
+        }
+    }
+}

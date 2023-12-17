@@ -1,0 +1,113 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+body{
+    overflow-x: hidden;
+}
+
+.products{
+    .products-nav{
+        padding: 10px 10px 10px 20px;
+        background-color: var.$grey-04-color;
+        border-bottom: 1px solid var.$grey-04-color;
+        button{
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            color: var.$grey-01-color;
+            &.active{
+                color: var.$primary-black-color;
+                font-weight: var.$font-weight-bold;
+            }
+        }
+        .alert-success{
+            top: 50px;
+        }
+    }
+    .products-products{
+        padding: 20px;
+        .actions{
+            display: flex;
+            justify-content: space-between;
+            form{
+                display: flex;
+                align-items: center;
+                flex-basis: 60%;
+                .form-group{
+                    margin-right: 20px;
+                    &.search{
+                        width: 50%;
+                    }
+                    #low-stock-products{
+                        transform: scale(1.5);
+                    }
+                    label{
+                        display: inline-block;
+                        text-transform: none;
+                        color: var.$primary-black-color;
+
+                    }
+                }
+            }
+            .buttons{
+                button{
+                    border: 0;
+                    background-color: var.$primary-denim-color;
+                    color: var.$primary-white;
+                    padding: 12px 16px;
+                    border-radius: 8px;
+                    width: 200px;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: var.$primary-marian-color;
+                    }
+                }
+            }
+        }
+        .products-info{
+            display: flex;
+            .total-items, .total-stock-value{
+                padding: 24px;
+                margin-right: 100px;
+                p{
+                    text-transform: uppercase;
+                    color: var.$grey-01-color;
+                    font-weight: var.$font-weight-bold;
+                }
+                .total{
+                    color: var.$primary-black-color;
+                }
+            }
+        }
+    }
+
+    .products-categories{
+        display: none;
+        .product-category-actions{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px;
+            button{
+                background-color: var.$primary-denim-color;
+                border: 0;
+                color: var.$primary-white;
+                padding: 12px 16px;
+                border-radius: 8px;
+                width: 200px;
+                cursor: pointer;
+                &:hover{
+                    background-color: var.$primary-marian-color;
+                }
+            }
+        }
+    }
+
+    #productCategoryCreateModal, #editProductCategoryModal{
+        .window{
+            height: auto;
+            overflow: auto;
+        }
+    }
+}

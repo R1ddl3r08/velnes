@@ -1,0 +1,281 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px; 
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 20px; 
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 18px; 
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: grey; 
+}
+
+p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+button {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.event-create, .update-appointment{
+  .section{
+    border: 1px solid var.$grey-04-color;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var.$primary-white;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .form-group{
+    width: 30%;
+    label{
+        display: block;
+        text-transform: uppercase;
+        color: var.$grey-01-color;
+        font-size: var.$font-size-base;
+        font-weight: var.$font-weight-bold;
+    }
+    .form-control{
+      height: auto;
+    }
+    select{
+      cursor: pointer;
+    }
+  }
+}
+
+.form-control{
+  border: 1px solid var.$grey-04-color;
+  border-radius: 8px;
+  padding: 14px 16px;
+  width: 100%;
+  height: 100%;
+  &.error{
+    border-color: var.$status-jasper-color;
+  }
+}
+
+table{
+  width: 100%;
+  border-spacing: 0;
+  thead{
+      tr{
+          th{
+              color: var.$grey-01-color;
+              text-align: left;
+              text-transform: uppercase;
+              padding: 20px;
+          }
+      }
+  }
+  tbody{
+      tr{
+          td{
+              padding: 20px;
+              button{
+                display: flex;
+                align-items: center;
+                padding: 15px 10px;
+                background-color: transparent;
+                border: 0;
+                outline: 0;
+                cursor: pointer;
+                border-radius: 8px;
+                &:hover{
+                  background-color: var.$grey-04-color;
+                }
+              }
+          }
+          &:nth-child(odd) {
+              background-color: var.$grey-07-color;
+          }
+      }
+  }
+
+}
+
+.window{
+  background-color: var.$primary-white;
+  border: 1px solid var.$grey-04-color;
+  border-radius: 8px;
+  width: 1153px;
+  height: 90vh;
+  overflow-y: scroll;
+  &.mini{
+    height: auto;
+  }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var.$grey-04-color;
+    padding: 20px;
+    h2{
+      margin: 0;
+    }
+    .closeModal{
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+    }
+  }
+  form{
+    .inner-form{
+      padding: 20px;
+    }
+    &.mini{
+      padding: 0px;
+    }
+  }
+  .footer{
+    padding: 20px;
+    border-top: 1px solid var.$grey-04-color;
+    display: flex;
+    justify-content: flex-end;
+    button{
+      border: 0;
+      outline: 0;
+      background-color: var.$primary-denim-color;
+      padding: 12px 16px;
+      color: var.$primary-white;
+      border-radius: 8px;
+      cursor: pointer;
+      &:hover{
+        background-color: var.$primary-marian-color;
+      }
+    }
+  }
+}
+
+label{
+  display: block;
+  text-transform: uppercase;
+  color: var.$grey-01-color;
+  font-size: var.$font-size-base;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.crudModal{
+  display: none;
+  flex-direction: column;
+  width: 150px;
+  border-radius: 8px;
+  border: 1px solid var.$grey-04-color;
+  overflow: hidden;
+  position: absolute;
+  button{
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    background-color: var.$primary-white!important;
+    font-weight: var.$font-weight-normal!important;
+    font-size: var.$font-size-base!important;
+    cursor: pointer;
+    &:hover{
+      background-color: var.$grey-06-color!important;
+    }
+    &:not(:last-child){
+      border-bottom: 1px solid var.$grey-04-color!important;
+    }
+    img{
+      margin-right: 10px;
+    }
+  }
+}
+
+.profile-picture{
+  .circle{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var.$primary-denim-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      p{
+        color: var.$primary-white;
+        margin: 0;
+      }
+  }
+}
+
+.alert{
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 10px;
+  position: absolute;
+  width: 400px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -20;
+  left: 50%;
+  transform: translateX(-50%);
+  &.show{
+    opacity: 1;
+    z-index: 1000;
+  }
+  &.alert-success{
+    background-color: var.$status-mint-green-color;
+    color: var.$status-pine-green-color;
+  }
+  &.alert-danger{
+    background-color: var.$status-jasper-color;
+    color: var.$primary-white;
+  }
+}
+
+.error-message{
+  color: var.$status-jasper-color;
+  font-weight: var.$font-weight-bold;
+  font-size: 14px;
+}

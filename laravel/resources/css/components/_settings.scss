@@ -1,0 +1,1079 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+
+.settings-menu{
+    border-right: 1px solid var.$grey-04-color;
+    padding: 10px;
+    position: fixed;
+    top: 10vh;
+    bottom: 0;
+    overflow-y: scroll;
+    width: 17%;
+    .header{
+        padding: 20px 16px;
+        border-bottom: 1px solid var.$grey-04-color;
+        p{
+            font-weight: var.$font-weight-bold;
+            margin: 0;
+        }
+    }
+    .menu{
+        display: flex;
+        flex-direction: column;
+        button{
+            background-color: transparent;
+            padding: 16px 24px;
+            border: 0;
+            outline: 0;
+            font-weight: var.$font-weight-normal;
+            text-align: left;
+            cursor: pointer;
+            &:hover{
+                background-color: var.$grey-06-color;
+            }
+            &.active{
+                background-color: var.$grey-06-color;
+                font-weight: var.$font-weight-bold;
+            }
+        }
+    }
+}
+
+.settings-content{
+    margin-left: 18%;
+    padding: 20px;
+}
+
+#settings-index{
+    display: flex;
+    h2{
+        font-size: 20px;
+    }
+    .popular-settings{
+        flex-basis: 70%;
+        .card{
+            padding: 20px;
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            .content{
+                margin: 0;
+                margin-left: 20px;
+            }
+        }
+    }
+    .your-stats{
+        margin-left: 20px;
+        .stats, .invite{
+            background-color: var.$grey-07-color;
+            padding: 30px 20px;
+            border-radius: 8px;
+            border: 1px solid var.$grey-04-color;
+            margin-bottom: 20px;
+        }
+        .stats{
+            .group{
+                text-align: center;
+                margin-bottom: 20px;
+                p{
+                    text-transform: uppercase;
+                    font-weight: var.$font-weight-bold;
+                    color: var.$grey-01-color;
+                    font-size: 16px;
+                    margin-bottom: 0;
+                    &.number{
+                        color: var.$primary-black-color;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        .invite{
+            p{
+                font-size: var.$font-size-base;
+                font-weight: var.$font-weight-bold;
+            }
+            button{
+                background-color: transparent;
+                border: 0;
+                outline: 0;
+                font-weight: var.$font-weight-bold;
+                color: var.$primary-denim-color;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#general-settings{
+    .section{
+        padding: 30px;
+        border: 1px solid var.$grey-04-color;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        &.selects{
+            display: flex;
+            justify-content: space-between;
+            .group{
+                flex-basis: 49%;
+                label{
+                    font-weight: var.$font-weight-bold;
+                }
+                select{
+                    height: auto;
+                }
+            }
+        }
+        &.access{
+            .group{
+                display: flex;
+                margin-bottom: 20px;
+                label{
+                    text-transform: none;
+                    color: var.$primary-black-color;
+                    font-weight: var.$font-weight-bold;
+                }
+            }
+            p{
+                font-size: 14px;
+                color: var.$grey-01-color;
+                margin-bottom: 0;
+            }
+        }
+    }
+    button{
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        color: var.$status-jasper-color;
+        cursor: pointer;
+    }
+
+    .window{
+        height: auto;
+        overflow: auto;
+        width: 700px;
+
+        .warning{
+            border-radius: 8px;
+            background-color: var.$status-misty-rose-color;
+            display: flex;
+            padding: 20px;
+            margin-bottom: 20px;
+            p{
+                color: var.$status-jasper-color;
+                font-size: var.$font-size-base;
+                margin-bottom: 0;
+            }
+            img{
+                margin-right: 10px;
+            }
+        }
+
+        .section{
+            padding: 20px;
+            .group{
+                display: flex;
+                label{
+                    text-transform: none;
+                    font-weight: var.$font-weight-bold;
+                    color: var.$primary-black-color;
+                    margin-left: 10px;
+                }
+                margin-bottom: 10px;
+            }
+            p{
+                font-size: 14px;
+                color: var.$grey-01-color;
+                margin-bottom: 0;
+            }
+        }
+
+        .footer{
+            display: flex;
+            justify-content: space-between;
+            button{
+                background-color: var.$primary-denim-color;
+                color: var.$primary-white;
+                border-radius: 8px;
+                flex-basis: 49%;
+                &:hover{
+                    background-color: var.$primary-marian-color;
+                }
+                &.delete{
+                    border: 1px solid var.$grey-04-color;
+                    color: var.$primary-black-color;
+                    background-color: transparent;
+                    &:hover{
+                        background-color: var.$grey-06-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#user-accounts{
+    .userAccountsCrudModal{
+        z-index: 20;
+    }
+    .first-div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            flex-basis: 70%;
+            font-size: var.$font-size-base;
+            line-height: 24px;
+        }
+        button{
+            height: 60px;
+            border: 0;
+            outline: 0;
+            color: var.$primary-white;
+            background-color: var.$primary-denim-color;
+            border-radius: 8px;
+            width: 200px;
+            &:hover{
+                background-color: var.$primary-marian-color;
+                cursor: pointer;
+            }
+        }
+
+        
+    }
+    .userAccountsCrudModalField{
+        position: relative;
+    }
+    .userAccountsCrudModal{
+        position: absolute;
+    }
+
+    #newUserAccountModal, #editUserAccountModal{
+        .window{
+            width: 700px;
+            label{
+                font-weight: var.$font-weight-bold;
+            }
+            form{
+
+                .group{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+                    .form-group{
+                        flex-basis: 49%;
+                        .form-control{
+                            height: auto;
+                        }
+                    }
+                }
+
+                .access-label{
+                    margin-top: 40px;
+                }
+
+                .access-group{
+                    padding: 20px 16px;
+                    border-bottom: 1px solid var.$grey-04-color;
+                    display: flex;
+                    align-items: flex-start;
+                    input{
+                        margin-top: 5px;
+                        margin-right: 10px;
+                    }
+                    label{
+                        .title{
+                            font-weight: var.$font-weight-bold;
+                            color: var.$primary-black-color;
+                        }
+                        p{
+                            font-size: var.$font-size-base;
+                            color: var.$grey-01-color;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+            .footer{
+                button{
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
+
+#company-information{
+    form{
+        padding: 30px;
+        border: 1px solid var.$grey-04-color;
+        border-radius: 8px;
+        margin-bottom: 30px;
+
+        .group{
+            display: flex;
+            justify-content: space-between;
+            .form-group{
+                &.company_name{
+                    flex-basis: 49%;
+                }
+                &.city, &.postal_code{
+                    flex-basis: 24%;
+                }
+                
+                .form-control{
+                    height: auto;
+                }
+            }
+            &.contact{
+                .form-group{
+                    flex-basis: 49%;
+                }
+            }
+
+        }
+
+        .form-group{
+            margin-bottom: 20px;
+        }
+
+        button{
+            background-color: var.$primary-denim-color;
+            color: var.$primary-white;
+            border-radius: 8px;
+            padding: 12px 16px;
+            border: 0;
+            width: 200px;
+            &:hover{
+                background-color: var.$primary-marian-color;
+            }
+        }
+
+        label{
+            font-weight: var.$font-weight-bold;
+            font-size: var.$font-size-base;
+        }
+
+        &.sms{
+            display: flex;
+            justify-content: space-between;
+            .form-group{
+                flex-basis: 49%;
+                height: 50px;
+            }
+        }
+
+    }
+}
+
+#employees{
+    .employees-actions{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        select, input{
+            margin-right: 20px;
+        }
+
+        .group{
+            display: flex;
+        }
+
+        button{
+            background-color: var.$primary-denim-color;
+            color: var.$primary-white;
+            border-radius: 8px;
+            border: 0;
+            padding: 12px 16px;
+            width: 200px;
+            cursor: pointer;
+            &:hover{
+                background-color: var.$primary-marian-color;
+            }
+        }
+
+    }
+
+    .employees-div{
+        .employee{
+            background-color: var.$grey-07-color;
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            p{
+                margin: 0;
+                margin: 0px 20px;
+            }
+            .identity{
+                display: flex;
+                align-items: center;
+            }
+            .group{
+                display: flex;
+                align-items: center;
+                position: relative;
+                .crudModal{
+                    top: 50px;
+                    left: 30px;
+                }
+                button{
+                    border: 0;
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    #editEmployeeAccountModal, #createEmployeeAccountModal{
+        .group{
+            margin-bottom: 20px;
+            label{
+                font-weight: var.$font-weight-bold;
+            }
+            &.name-photo{
+                display: flex;
+                justify-content: space-between;
+                .form-group{
+                    flex-basis: 49%;
+                    input{
+                        height: auto;
+                    }
+                    label{
+                        margin-bottom: 10px;
+                    }
+                    .inner-group{
+                        display: flex;
+                        .profile-picture{
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+
+            &.gender{
+                .options{
+                    display: flex;
+                    .radio-group{
+                        display: flex;
+                        margin-right: 10px;
+                        label{
+                            font-weight: var.$font-weight-normal;
+                            color: var.$primary-black-color;
+                        }
+                    }
+                }
+            }
+
+            &.email-number{
+                display: flex;
+                justify-content: space-between;
+                .form-group{
+                    flex-basis: 49%;
+                    input{
+                        height: auto;
+                    }
+                }
+            }
+
+            &.bookable{
+                .form-group{
+                    display: flex;
+                    label{
+                        font-weight: var.$font-weight-normal;
+                        color: var.$primary-black-color;
+                    }
+                }
+            }
+
+            &.checkboxes{
+                background-color: var.$grey-04-color;
+                border-radius: 8px;
+                padding: 20px;
+                #checkboxes-container, #update-checkboxes-container{
+                    overflow-y: scroll;
+                    height: 200px;
+                    label{
+                        font-size: 16px;
+                        color: var.$primary-black-color;
+                        font-weight: var.$font-weight-normal;
+                    }
+
+                    .services-container{
+                        margin-left: 30px;
+                        .service{
+                            display: flex;
+                            label{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+#resources{
+    .resources-actions{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        select, input{
+            margin-right: 20px;
+            width: 200px;
+        }
+
+        .group{
+            display: flex;
+        }
+
+        button{
+            background-color: var.$primary-denim-color;
+            color: var.$primary-white;
+            border-radius: 8px;
+            border: 0;
+            padding: 12px 16px;
+            width: 200px;
+            cursor: pointer;
+            &:hover{
+                background-color: var.$primary-marian-color;
+            }
+        }
+
+    }
+
+    .resources-div{
+        margin-bottom: 40px;
+        .resource{
+            background-color: var.$grey-07-color;
+            border: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            p{
+                margin: 0;
+                margin: 0px 20px;
+            }
+            .identity{
+                display: flex;
+                align-items: center;
+            }
+            .group{
+                display: flex;
+                align-items: center;
+                position: relative;
+                .crudModal{
+                    top: 50px;
+                    left: -100px;
+                }
+                button{
+                    border: 0;
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    #createResourceModal, #editResourceModal{
+        .window{
+            height: auto;
+            overflow: auto;
+            width: 700px;
+        }
+        form{
+            .group{
+                margin-bottom: 20px;
+                &.name-photo{
+                    display: flex;
+                    justify-content: space-between;
+                    .form-group{
+                        flex-basis: 49%;
+                        input{
+                            height: auto;
+                        }
+                        label{
+                            margin-bottom: 10px;
+                        }
+                        .inner-group{
+                            display: flex;
+                            .profile-picture{
+                                margin-right: 20px;
+                            }
+                        }
+                    }
+                }
+                &.radio{
+                    .form-group{
+                        .options{
+                            display: flex;
+                            .radio-group{
+                                display: flex;
+                                margin-right: 10px;
+                                label{
+                                    color: var.$primary-black-color;
+                                    font-weight: var.$font-weight-normal;
+                                    text-transform: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.bookable-online{
+                    .form-group{
+                        display: flex;
+                        label{
+                            color: var.$primary-black-color;
+                            text-transform: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#services{
+    .services-actions{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        select, input{
+            margin-right: 20px;
+            width: 200px;
+        }
+
+        .group{
+            display: flex;
+        }
+
+        button{
+            background-color: var.$primary-denim-color;
+            color: var.$primary-white;
+            border-radius: 8px;
+            border: 0;
+            padding: 12px 16px;
+            width: 200px;
+            cursor: pointer;
+            &:hover{
+                background-color: var.$primary-marian-color;
+            }
+
+            &#addCategoryButton{
+                background-color: var.$primary-white;
+                border: 1px solid var.$grey-04-color;
+                border-radius: 8px;
+                color: var.$primary-black-color;
+                &:hover{
+                    background-color: var.$grey-04-color;
+                }
+            }
+        }
+
+    }
+
+    .services-div{
+        .service{
+            border-bottom: 1px solid var.$grey-04-color;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            .service-details{
+                display: flex;
+            }
+            p{
+                margin: 0;
+                font-size: var.$font-size-base;
+            }
+            .group{
+                display: flex;
+                p{
+                    margin-left: 20px;
+                }
+                .serviceCrudModalButton{
+                    margin-left: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 0;
+                    background-color: transparent;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .service-category{
+            margin-bottom: 20px;
+            .inner-service-category{
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 8px;
+                cursor: pointer;
+                p{
+                    margin: 0;
+                }
+                .group{
+                    display: flex;
+                    align-items: center;
+                    img, .categoryServiceCrudModalButton{
+                        margin-left: 20px;
+                    }
+
+                    .categoryServiceCrudModalButton{
+                        border: 0;
+                        background-color: transparent;
+                        padding: 10px;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+                h3{
+                    font-weight: bold;
+                    margin: 0;
+                }
+            }
+            .services-list{
+                border: 1px solid var.$grey-04-color;
+                border-bottom: 0;
+                border-radius: 8px;
+            }
+        }
+    }
+
+    #createServiceCategoryModal, #editServiceCategoryModal{
+        .window{
+            height: auto;
+            width: 550px;
+            overflow: auto;
+            form{
+                .inner-form{
+                    display: flex;
+                    justify-content: space-between;
+
+                    input{
+                        height: auto;
+                    }
+
+                    .color-group{
+                        .group{
+                            display: flex;
+                            .circle{
+                                margin-right: 10px;
+                                .inner-circle{
+                                    height: 50px;
+                                    width: 50px;
+                                    border-radius: 50%;
+                                    border: 1px solid var.$grey-04-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #createServiceModal, #editServiceModal{
+        .form-group{
+            margin-bottom: 20px;
+            .employees-checkboxes{
+                display: flex;
+                flex-wrap: wrap;
+                .group{
+                    display: flex;
+                    flex-basis: 25%;
+                }
+            }
+            &.bookable{
+                display: flex;
+                label{
+                    text-transform: none;
+                    color: var.$primary-black-color;
+                }
+            }
+        }
+    }
+}
+
+#working-hours{
+    .working-hours-actions{
+        display: flex;
+        justify-content: space-between;
+        div{
+            display: flex;
+            h2{
+                font-size: 32px;
+                margin-right: 10px;
+            }
+            .date{
+                font-size: var.$font-size-base;
+                font-weight: var.$font-weight-bold;
+                color: var.$grey-01-color;
+            }
+            .today{
+                border: 1px solid var.$grey-04-color;
+                border-radius: 8px;
+                padding: 12px 16px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                margin-right: 10px;
+                p{
+                    line-height: 20px;
+                    margin: 0;
+                    font-size: var.$font-size-base;
+                    font-weight: var.$font-weight-bold;
+                }
+            }
+            .choose-date{
+                display: flex;
+                justify-content: space-between;
+                .previousDayBtn, .nextDayBtn{
+                    border: 1px solid var.$grey-04-color;
+                    border-radius: 8px;
+                    padding: 13px 12px;
+                    background-color: var.$primary-white;
+                    height: 50px;
+                    width: auto;
+                    &:hover{
+                        background-color: var.$grey-05-color;
+                        cursor: pointer;
+                    }
+                }
+                #datePicker{
+                    border: 1px solid var.$grey-04-color;
+                    border-radius: 8px;
+                    padding: 10px;
+                    width: 65%;
+                    height: 50px;
+                    appearance: none;
+                    &:hover{
+                        background-color: var.$grey-05-color;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .days{
+        display: flex;
+        margin-bottom: 30px;
+        .space{
+            flex-basis: 20%;
+        }
+        .inner-days{
+            flex-basis: 80%;
+            display: flex;
+            justify-content: flex-end;
+            .day{
+                margin-left: 20px;
+                flex-basis: 13%;
+                p{
+                    margin: 0;
+                    text-align: center;
+                }
+                .date{
+                    color: var.$primary-denim-color;
+                    font-size: 24px;
+                    font-weight: var.$font-weight-bold;
+                }
+                .day-of-week{
+                    font-weight: var.$font-weight-bold;
+                    font-size: var.$font-weight-bold;
+                }
+            }
+        }
+    }
+    .salon-working-hours{
+        display: flex;
+        justify-content: space-between;
+        .salon-identity{
+            flex-basis: 20%;
+            .name{
+                margin: 0;
+                font-weight: var.$font-weight-bold;
+            }
+            .name-photo{
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                .profile-picture{
+                    margin-right: 10px;
+                }
+            }
+            .hours{
+                font-size: var.$font-size-base;
+                color: var.$grey-01-color;
+            }
+        }
+        .working-hours{
+            display: flex;
+            flex-basis: 80%;
+            margin-bottom: 30px;
+            .interval{
+                height: 110px;
+                flex-basis: 14%;
+                background-color: var.$status-mint-green-color;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+                margin-left: 10px;
+                p{
+                    font-size: 14px;
+                    margin: 0;
+                }
+
+                &.divided{
+                    background-color: transparent;
+                    flex-direction: column;
+                    .inner-interval{
+                        border-radius: 8px;
+                        padding: 10px;
+                        height: 33.33px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        &:not(:last-child){
+                            margin-bottom: 5px;
+                        }
+                        &.green{
+                            background-color: var.$status-mint-green-color;
+                        }
+                        &.blue{
+                            background-color: var.$secondary-lavender-color;
+                        }
+                        &.orange{
+                            background-color: var.$status-papaya-whip-color;
+                        }
+                    }
+                }
+
+                &.add-new{
+                    background-color: transparent;
+                    border: 1px solid var.$grey-04-color;
+                    cursor: pointer;
+                    p{
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+
+    }
+    .employees-working-hours{
+        .identity{
+            flex-basis: 20%;
+            .name{
+                margin: 0;
+                font-weight: var.$font-weight-bold;
+            }
+            .name-photo{
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                .profile-picture{
+                    margin-right: 10px;
+                }
+            }
+            .hours{
+                font-size: var.$font-size-base;
+                color: var.$grey-01-color;
+                margin-bottom: 0;
+            }
+        }
+
+        .employee{
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid var.$grey-04-color;
+            .working-hours{
+                flex-basis: 80%;
+                display: flex;
+                .interval{
+                    padding: 10px;
+                    border-radius: 8px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                    background-color: var.$status-mint-green-color;
+                    flex-basis: 14%;
+                    margin-left: 10px;
+                    &.add-new{
+                        background-color: transparent;
+                        border: 1px solid var.$grey-04-color;
+                        cursor: pointer;
+                        p{
+                            font-size: 30px;
+                        }
+                    }
+                    p{
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            &.salon{
+                .working-hours{
+                    display: block;
+                    .interval{
+                        background-color: var.$grey-04-color;
+                        p{
+                            font-size: var.$font-size-base;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#customer-groups{
+    .customer-group-actions{
+        display: flex;
+        justify-content: flex-end;
+        button{
+            padding: 12px 16px;
+            width: 200px;
+            background-color: var.$primary-denim-color;
+            border-radius: 8px;
+            color: var.$primary-white;
+            cursor: pointer;
+            border: 0;
+            &:hover{
+                background-color: var.$primary-marian-color;
+            }
+        }
+    }
+
+    .modal{
+        .window{
+            height: auto;
+            width: 45%;
+        }
+    }
+}

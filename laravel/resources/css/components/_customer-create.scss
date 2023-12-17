@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use 'sass:math';
+
+.customer-create, .customer-update{
+    display: flex;
+    justify-content: center;
+    .window{
+        width: 60%;
+        .closeModal{
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+        }
+        form{
+            .form-group{
+                width: 48%;
+                display: inline-block;
+                margin-right: 10px;
+                margin-bottom: 20px;
+                &.radio{
+                    width: 100%;
+                    .group-label{
+                        margin-bottom: 10px;
+                    }
+                    .radio-groups{
+                        display: flex;
+                        .radio-group{
+                            display: flex;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+                &.address{
+                    width: 100%;
+                }
+                &.warning{
+                    width: 100%;
+                }
+            }
+            a{
+                text-decoration: none;
+                color: var.$primary-denim-color;
+                font-weight: var.$font-weight-bold;
+            }
+        }
+    }
+}
