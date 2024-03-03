@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $picturePath = $faker->image(storage_path('app/public/profile_pictures'), 200, 200, 'people', false);
+
         User::create([
             'full_name' => 'admin',
             'company_name' => 'Brainster',
@@ -24,7 +24,7 @@ class AdminSeeder extends Seeder
             'password' => 'Admin123$',
             'is_trial' => 0,
             'role_id' => 1,
-            'photo_url' => 'profile_pictures/' . pathinfo($picturePath, PATHINFO_BASENAME),
+
         ]);
     }
 }

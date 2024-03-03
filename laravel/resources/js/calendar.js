@@ -83,6 +83,7 @@ $(function() {
             tableHeader += `<th>${day}</th>`;
         });
         theadRow.html(tableHeader);
+
     
         // -----
         tbody.html('');
@@ -110,7 +111,7 @@ $(function() {
             const endTime = startTime.clone().add(appointment.duration, 'minutes');
             const durationInSlots = appointment.durationInSlots;
         
-            const columnIndex = days.indexOf(startTime.format('ddd D'));
+            const columnIndex = days.indexOf(startTime.format('ddd DD'));
             const rowIndex = (startTime.hours() - 8) * 4 + startTime.minutes() / 15;
         
             const cell = $(`.calendar-table tbody tr:eq(${rowIndex}) td:eq(${columnIndex + 1})`);
